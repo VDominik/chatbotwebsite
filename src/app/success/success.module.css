@@ -1,0 +1,26 @@
+.successContainer {
+    text-align: center;
+    padding: 4rem 2rem;
+    max-width: 600px;
+    margin: 60px auto;
+}
+
+.successIcon {
+    color: #22c55e;
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.backButton {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background-color: #6366f1;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 2rem;
+}
+
+.backButton:hover {
+    background-color: #4f46e5;
+} 
