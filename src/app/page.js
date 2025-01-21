@@ -8,10 +8,10 @@ export default function Home() {
     const script = document.createElement("script");
     script.type = "module";
     script.textContent = `
-      import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js";
-      Chatbot.init({
-        chatflowid: "4e934533-6116-46fe-ad93-8c29a6a3e012",
-        apiHost: "http://localhost:3000",
+    import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js"
+    Chatbot.init({
+        chatflowid: "014370f0-dd3c-4952-b966-e1e5677c2663",
+        apiHost: "https://flowisetest-hc47.onrender.com",
         chatflowConfig: {
           /* Chatflow Config */
         },
@@ -90,10 +90,6 @@ export default function Home() {
               maxChars: 50,
               maxCharsWarningMessage: 'You exceeded the characters limit. Please input less than 50 characters.',
               autoFocus: true,
-              sendMessageSound: true,
-              sendSoundLocation: 'send_message.mp3',
-              receiveMessageSound: true,
-              receiveSoundLocation: 'receive_message.mp3'
             },
             feedback: {
               color: '#303235'
