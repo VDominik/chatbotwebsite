@@ -10,8 +10,8 @@ export default function Home() {
     script.textContent = `
     import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js"
     Chatbot.init({
-        chatflowid: "e9d079c9-73d4-483f-8b10-69765a77f874",
-        apiHost: "https://vdominikk-flowise.hf.space",
+        chatflowid: "014370f0-dd3c-4952-b966-e1e5677c2663",
+        apiHost: "https://flowisetest-hc47.onrender.com",
         chatflowConfig: {
           /* Chatflow Config */
         },
@@ -90,10 +90,6 @@ export default function Home() {
               maxChars: 50,
               maxCharsWarningMessage: 'You exceeded the characters limit. Please input less than 50 characters.',
               autoFocus: true,
-              sendMessageSound: true,
-              sendSoundLocation: 'send_message.mp3',
-              receiveMessageSound: true,
-              receiveSoundLocation: 'receive_message.mp3'
             },
             feedback: {
               color: '#303235'
