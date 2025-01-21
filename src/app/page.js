@@ -8,10 +8,10 @@ export default function Home() {
     const script = document.createElement("script");
     script.type = "module";
     script.textContent = `
-      import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js";
-      Chatbot.init({
-        chatflowid: "4e934533-6116-46fe-ad93-8c29a6a3e012",
-        apiHost: "http://localhost:3000",
+    import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js"
+    Chatbot.init({
+        chatflowid: "e9d079c9-73d4-483f-8b10-69765a77f874",
+        apiHost: "https://vdominikk-flowise.hf.space",
         chatflowConfig: {
           /* Chatflow Config */
         },
