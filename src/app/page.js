@@ -10,8 +10,8 @@ export default function Home() {
     script.textContent = `
     import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js"
     Chatbot.init({
-        chatflowid: "014370f0-dd3c-4952-b966-e1e5677c2663",
-        apiHost: "https://flowisetest-hc47.onrender.com",
+         chatflowid: "e9d079c9-73d4-483f-8b10-69765a77f874",
+        apiHost: "https://vdominikk-flowise.hf.space",
         chatflowConfig: {
           /* Chatflow Config */
         },
