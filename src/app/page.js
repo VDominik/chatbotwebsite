@@ -1,7 +1,8 @@
 "use client";
 import { useEffect } from "react";
 import styles from "./page.module.css";
-import StripeButton from '@/components/StripeButton';
+import StripeButton from "@/components/StripeButton";
+import Link from "next/link";
 
 export default function Home() {
   useEffect(() => {
@@ -10,8 +11,8 @@ export default function Home() {
     script.textContent = `
     import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js"
     Chatbot.init({
-         chatflowid: "e9d079c9-73d4-483f-8b10-69765a77f874",
-        apiHost: "https://vdominikk-flowise.hf.space",
+        chatflowid: "f5739421-2bf0-4baa-b597-621a0ccb75db",
+        apiHost: "https://flowisetest-hc47.onrender.com",
         chatflowConfig: {
           /* Chatflow Config */
         },
@@ -26,7 +27,7 @@ export default function Home() {
             size: 48,
             dragAndDrop: true,
             iconColor: 'white',
-            customIconSrc: 'https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/svg/google-messages.svg',
+            customIconSrc: '/messenger2.png',
             autoWindowOpen: {
               autoOpen: false,
               openDelay: 2,
@@ -35,7 +36,7 @@ export default function Home() {
           },
           tooltip: {
             showTooltip: true,
-            tooltipMessage: 'Hi There 👋!',
+            tooltipMessage: 'Hi There 👋 Ask me!',
             tooltipBackgroundColor: 'black',
             tooltipTextColor: 'white',
             tooltipFontSize: 16
@@ -50,63 +51,64 @@ export default function Home() {
             blurredBackgroundColor: 'rgba(0, 0, 0, 0.4)',
             backgroundColor: 'white'
           },
-          chatWindow: {
-            showTitle: true,
-            showAgentMessages: true,
-            title: 'Flowise Bot',
-            titleAvatarSrc: 'https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/svg/google-messages.svg',
-            welcomeMessage: 'Hello! This is custom welcome message',
-            errorMessage: 'This is a custom error message',
-            backgroundColor: '#ffffff',
-            backgroundImage: 'enter image path or link',
-            height: 700,
-            width: 400,
-            fontSize: 16,
-            starterPrompts: [
-              "What is a bot?",
-              "Who are you?"
-            ],
-            starterPromptFontSize: 15,
-            clearChatOnReload: false,
-            sourceDocsTitle: 'Sources:',
-            renderHTML: true,
-            botMessage: {
-              backgroundColor: '#f7f8ff',
-              textColor: '#303235',
-              showAvatar: true,
-              avatarSrc: 'https://raw.githubusercontent.com/zahidkhawaja/langchain-chat-nextjs/main/public/parroticon.png'
-            },
-            userMessage: {
-              backgroundColor: '#3B81F6',
-              textColor: '#ffffff',
-              showAvatar: true,
-              avatarSrc: 'https://raw.githubusercontent.com/zahidkhawaja/langchain-chat-nextjs/main/public/usericon.png'
-            },
-            textInput: {
-              placeholder: 'Type your question',
-              backgroundColor: '#ffffff',
-              textColor: '#303235',
-              sendButtonColor: '#3B81F6',
-              maxChars: 50,
-              maxCharsWarningMessage: 'You exceeded the characters limit. Please input less than 50 characters.',
-              autoFocus: true,
-            },
-            feedback: {
-              color: '#303235'
-            },
-            dateTimeToggle: {
-              date: true,
-              time: true
-            },
-            footer: {
-              textColor: '#303235',
-              text: 'Powered by',
-              company: 'DogBot',
-              companyLink: '/'
+          customCSS: 'button.fixed{border-radius: 50%; overflow: visible; padding: 10px;} button.fixed img{border-radius: 0;} figure.rounded-full img{border-radius: 0}', 
+            chatWindow: {
+                showTitle: true,
+                showAgentMessages: true,
+                title: 'DoggoBot',
+                titleAvatarSrc: '/messenger2.png',
+                welcomeMessage: 'Ask me anything about dogs',
+                errorMessage: 'This is a custom error message',
+                backgroundColor: '#ffffff',
+                backgroundImage: 'enter image path or link',
+                height: 700,
+                width: 400,
+                fontSize: 16,
+                starterPrompts: [
+                    "Tell me something interesting about Golden Retrievers",
+                    "Tell me something interesting about Poodles",
+                ],
+                starterPromptFontSize: 15,
+                clearChatOnReload: false,
+                sourceDocsTitle: 'Sources:',
+                renderHTML: true,
+                botMessage: {
+                    backgroundColor: '#f7f8ff',
+                    textColor: '#303235',
+                    showAvatar: true,
+                    avatarSrc: '/messenger2.png'
+                },
+                userMessage: {
+                    backgroundColor: '#3B81F6',
+                    textColor: '#ffffff',
+                    showAvatar: true,
+                    avatarSrc: '/messenger.png'
+                },
+                textInput: {
+                    placeholder: 'Type your question',
+                    backgroundColor: '#ffffff',
+                    textColor: '#303235',
+                    sendButtonColor: '#3B81F6',
+                    maxChars: 50,
+                    maxCharsWarningMessage: 'You exceeded the characters limit. Please input less than 50 characters.',
+                    autoFocus: true,
+                },
+                feedback: {
+                    color: '#303235'
+                },
+                dateTimeToggle: {
+                    date: true,
+                    time: true
+                },
+                footer: {
+                    textColor: '#303235',
+                    text: 'Powered by',
+                    company: 'Huddll',
+                    companyLink: '/'
+                }
             }
-          }
         }
-      });
+    });
     `;
     document.body.appendChild(script);
   }, []);
@@ -115,7 +117,11 @@ export default function Home() {
     <div className={styles.page}>
       <header>
         <nav>
-          <div className={styles.logo}>AI Chat Services</div>
+          <div className={styles.logo}>
+            <Link href="/">
+              <img src="/LogoSmall.png" alt="Logo" />
+            </Link>
+          </div>
           <div className={styles.navLinks}>
             <a href="#features">Features</a>
             <a href="#pricing">Pricing</a>
@@ -127,7 +133,10 @@ export default function Home() {
       <main>
         <section id="hero" className={styles.hero}>
           <h1>Transform Your Business with AI Chatbots</h1>
-          <p>24/7 customer support, increased engagement, and better user experience</p>
+          <p>
+            24/7 customer support, increased engagement, and better user
+            experience
+          </p>
           <button className={styles.ctaButton}>Get Started</button>
         </section>
 
@@ -192,7 +201,7 @@ export default function Home() {
       </main>
 
       <footer className={styles.footer}>
-        <p>&copy; 2024 AI Chat Services. All rights reserved.</p>
+        <p>&copy; 2024 Huddll. All rights reserved.</p>
       </footer>
     </div>
   );
