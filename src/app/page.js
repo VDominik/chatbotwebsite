@@ -1,5 +1,5 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import styles from "./page.module.css";
 import StripeButton from "@/components/StripeButton";
 import Link from "next/link";
@@ -113,6 +113,37 @@ export default function Home() {
     document.body.appendChild(script);
   }, []);
 
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const response = await fetch('/api/send-email', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    });
+  
+    if (response.ok) {
+      alert('Email sent successfully');
+    } else {
+      alert('Error sending email');
+    }
+  };
+
   return (
     <div className={styles.page}>
       <header>
@@ -191,13 +222,34 @@ export default function Home() {
 
         <section id="contact" className={styles.contact}>
           <h2>Contact Us</h2>
-          <form id="contact-form">
-            <input type="text" placeholder="Name" required />
-            <input type="email" placeholder="Email" required />
-            <textarea placeholder="Message" required></textarea>
+          <form id="contact-form" onSubmit={handleSubmit}>
+            <input
+              type="text"
+              name="name"
+              placeholder="Name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+            <textarea
+              name="message"
+              placeholder="Message"
+              value={formData.message}
+              onChange={handleChange}
+              required
+            ></textarea>
             <button type="submit">Send Message</button>
           </form>
         </section>
+        
       </main>
 
       <footer className={styles.footer}>
