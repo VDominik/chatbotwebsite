@@ -3,6 +3,9 @@ import { useEffect, useState } from "react";
 import styles from "./page.module.css";
 import StripeButton from "@/components/StripeButton";
 import Link from "next/link";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Navbar from "@/components/Navbar";
 
 export default function Home() {
   useEffect(() => {
@@ -114,9 +117,9 @@ export default function Home() {
   }, []);
 
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
+    name: "",
+    email: "",
+    message: "",
   });
 
   const handleChange = (e) => {
@@ -127,40 +130,46 @@ export default function Home() {
     });
   };
 
+  const handleClick = () => {
+    toast.info("Please contact us or login before selecting a plan.", {
+      autoClose: 5000, // The toast will automatically close after 5 seconds
+    });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch('/api/send-email', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    });
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
   
-    if (response.ok) {
-      alert('Email sent successfully');
-    } else {
-      alert('Error sending email');
+      const result = await response.json();
+  
+      if (response.ok) {
+        toast.success('Email sent successfully');
+        // Clear the form inputs
+        setFormData({
+          name: '',
+          email: '',
+          message: '',
+        });
+      } else {
+        console.error('Error sending email:', result);
+        toast.error(`Error sending email: ${result.message}`);
+      }
+    } catch (error) {
+      console.error('Error sending email:', error);
+      toast.error(`Error sending email: ${error.message}`);
     }
   };
 
   return (
     <div className={styles.page}>
-      <header>
-        <nav>
-          <div className={styles.logo}>
-            <Link href="/">
-              <img src="/LogoSmall.png" alt="Logo" />
-            </Link>
-          </div>
-          <div className={styles.navLinks}>
-            <a href="#features">Features</a>
-            <a href="#pricing">Pricing</a>
-            <a href="#contact">Contact</a>
-          </div>
-        </nav>
-      </header>
-
+      <Navbar />
       <main>
         <section id="hero" className={styles.hero}>
           <h1>Transform Your Business with AI Chatbots</h1>
@@ -168,7 +177,9 @@ export default function Home() {
             24/7 customer support, increased engagement, and better user
             experience
           </p>
+          <Link href="#contact">
           <button className={styles.ctaButton}>Get Started</button>
+          </Link>
         </section>
 
         <section id="features" className={styles.features}>
@@ -200,9 +211,13 @@ export default function Home() {
                 <li>Up to 1000 messages/month</li>
                 <li>Email support</li>
               </ul>
-              <StripeButton priceId="price_1Qiv3KKzyhM3L3BGPrSyf7fP">
+              {/* <StripeButton priceId="price_1Qiv3KKzyhM3L3BGPrSyf7fP">
                 Select Basic Plan
-              </StripeButton>
+              </StripeButton> */}
+              <Link href="#contact">
+                <button onClick={handleClick} className={styles.selectPlan}>Select Basic Plan</button>
+              </Link>
+
             </div>
             <div className={`${styles.pricingCard} ${styles.featured}`}>
               <h3>Professional</h3>
@@ -213,9 +228,12 @@ export default function Home() {
                 <li>24/7 support</li>
                 <li>Custom training</li>
               </ul>
-              <StripeButton priceId="price_1QiuyRKzyhM3L3BGcMPw7NEC">
+              {/* <StripeButton priceId="price_1QiuyRKzyhM3L3BGcMPw7NEC">
                 Select Pro Plan
-              </StripeButton>
+              </StripeButton> */}
+              <Link href="#contact">
+                <button onClick={handleClick} className={styles.selectPlan}>Select Pro Plan</button>
+              </Link>
             </div>
           </div>
         </section>
@@ -249,12 +267,15 @@ export default function Home() {
             <button type="submit">Send Message</button>
           </form>
         </section>
-        
       </main>
+
 
       <footer className={styles.footer}>
         <p>&copy; 2024 Huddll. All rights reserved.</p>
       </footer>
+
+      <ToastContainer position="bottom-left" />
+
     </div>
   );
 }
