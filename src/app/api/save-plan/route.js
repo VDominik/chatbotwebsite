@@ -4,7 +4,7 @@ import { createClient } from '@supabase/supabase-js';
 // Use your Supabase URL and a service key (ensure these are correctly set in your environment)
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL,
-  process.env.NEXT_PUBLIC_SUPABASE_SERVICE_KEY
+  process.env.SUPABASE_SERVICE_KEY
 );
 
 export async function POST(request) {
