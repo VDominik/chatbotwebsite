@@ -1,0 +1,53 @@
+.container {
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+  
+  .loginForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .inputGroup {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+  }
+  
+  .loginInput {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .loginButton {
+    padding: 0.75rem;
+    margin: 16px;
+    font-size: 1rem;
+    background-color: #3B81F6;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .toggleButton {
+    background: none;
+    border: none;
+    color: #3B81F6;
+    cursor: pointer;
+    text-decoration: underline;
+    padding: 0;
+  }
+  
+  .message {
+    margin-top: 1rem;
+    color: red;
+  }
