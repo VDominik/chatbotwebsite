@@ -190,7 +190,7 @@ export default function Dashboard() {
       </main>
 
       <footer className={styles.footer}>
-        <p>&copy; 2024 Huddll. All rights reserved.</p>
+        <p>&copy; 2024 UpTalk Studio. All rights reserved.</p>
       </footer>
       <ToastContainer />
       <Modal

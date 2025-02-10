@@ -27,7 +27,7 @@ export default function Navbar() {
       <nav>
         <div className={styles.logo}>
           <Link href="/">
-            <img src="/LogoSmall.png" alt="Logo" />
+            <img src="/logo.png" alt="Logo" />
           </Link>
         </div>
         <div className={styles.navLinks}>
