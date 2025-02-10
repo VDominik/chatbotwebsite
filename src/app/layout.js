@@ -12,7 +12,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Huddll",
+  title: "UpTalk Studio",
   description: "Easily integrated chatbot for your website",
 };
 
