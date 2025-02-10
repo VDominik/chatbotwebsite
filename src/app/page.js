@@ -106,7 +106,7 @@ export default function Home() {
                 footer: {
                     textColor: '#303235',
                     text: 'Powered by',
-                    company: 'Huddll',
+                    company: 'UpTalk Studio',
                     companyLink: '/'
                 }
             }
@@ -271,7 +271,7 @@ export default function Home() {
 
 
       <footer className={styles.footer}>
-        <p>&copy; 2024 Huddll. All rights reserved.</p>
+        <p>&copy; 2024 UpTalk Studio. All rights reserved.</p>
       </footer>
 
       <ToastContainer position="bottom-left" />
