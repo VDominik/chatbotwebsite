@@ -44,6 +44,10 @@ section.Toastify{
 }
 
 #hero {
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   text-align: center;
   padding: 6rem 5%;
   background: #373b44; /* fallback for old browsers */
@@ -59,7 +63,7 @@ section.Toastify{
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   color: white;
   border-radius: 16px;
-  margin-top: 72px;
+  margin-top: 120px;
 }
 
 h1 {
