@@ -58,9 +58,9 @@ export default function Home() {
             chatWindow: {
                 showTitle: true,
                 showAgentMessages: true,
-                title: 'DoggoBot',
+                title: 'UpTalk Studio',
                 titleAvatarSrc: '/messenger2.png',
-                welcomeMessage: 'Ask me anything about dogs',
+                welcomeMessage: 'Ask me about our products and services',
                 errorMessage: 'This is a custom error message',
                 backgroundColor: '#ffffff',
                 backgroundImage: 'enter image path or link',
@@ -68,8 +68,8 @@ export default function Home() {
                 width: 400,
                 fontSize: 16,
                 starterPrompts: [
-                    "Tell me something interesting about Golden Retrievers",
-                    "Tell me something interesting about Poodles",
+                    "How does it work?",
+                    "What is the pricing?",
                 ],
                 starterPromptFontSize: 15,
                 clearChatOnReload: false,
@@ -187,16 +187,17 @@ export default function Home() {
           <div className={styles.featureGrid}>
             <div className={styles.featureCard}>
               <h3>24/7 Availability</h3>
-              <p>Always ready to assist your customers</p>
+              <p>Always ready to assist your customers, ensuring instant responses at any time.</p>
             </div>
             <div className={styles.featureCard}>
               <h3>Custom Training</h3>
-              <p>Tailored to your business needs</p>
+              <p>Tailored to your business needs for smarter, more relevant interactions.</p>
             </div>
             <div className={styles.featureCard}>
               <h3>Multi-language Support</h3>
-              <p>Connect with customers globally</p>
+              <p>Engage customers globally with seamless multilingual communication.</p>
             </div>
+            
           </div>
         </section>
 
@@ -207,9 +208,9 @@ export default function Home() {
               <h3>Basic</h3>
               <p className={styles.price}>$99/month</p>
               <ul>
-                <li>Basic chatbot functionality</li>
-                <li>Up to 1000 messages/month</li>
-                <li>Email support</li>
+                <li> &#10004; Essential chatbot functionality</li>
+                <li> &#10004; AI-powered responses from uploaded documents</li>
+                <li> &#10004; Email support</li>
               </ul>
               {/* <StripeButton priceId="price_1Qiv3KKzyhM3L3BGPrSyf7fP">
                 Select Basic Plan
@@ -217,16 +218,18 @@ export default function Home() {
               <Link href="#contact">
                 <button onClick={handleClick} className={styles.selectPlan}>Select Basic Plan</button>
               </Link>
-
+              <p className={styles.bestfortext}>Ideal for small businesses & individuals who need a simple yet powerful document-based chatbot without complex automation.</p>
             </div>
             <div className={`${styles.pricingCard} ${styles.featured}`}>
               <h3>Professional</h3>
-              <p className={styles.price}>$199/month</p>
+              <p className={styles.price}>$149/month</p>
               <ul>
-                <li>Advanced AI capabilities</li>
-                <li>Unlimited messages</li>
-                <li>24/7 support</li>
-                <li>Custom training</li>
+                <li>Everything in Basic, plus:</li>
+                <li> &#10004; Automated lead capture</li>
+                <li> &#10004; Analytics & reporting</li>
+                <li> &#10004; Continuous AI learning & document updates</li>
+                <li> &#10004; Conversation storage & Google Docs sync</li>
+
               </ul>
               {/* <StripeButton priceId="price_1QiuyRKzyhM3L3BGcMPw7NEC">
                 Select Pro Plan
@@ -234,6 +237,24 @@ export default function Home() {
               <Link href="#contact">
                 <button onClick={handleClick} className={styles.selectPlan}>Select Pro Plan</button>
               </Link>
+              <p className={styles.bestfortext}>Best for businesses that want more automation, smarter AI, and insights from customer interactions.</p>
+            </div>
+            <div className={`${styles.pricingCard}`}>
+              <h3>Enterprise</h3>
+              <p className={styles.price}>Custom Pricing</p>
+              <ul>
+                <li>Everything in Professional, plus</li>
+                <li> &#10004; White-label chatbot</li>
+                <li> &#10004;	API access for deeper integration</li>
+                <li> &#10004; Personalized Setup</li>
+              </ul>
+              {/* <StripeButton priceId="price_1QiuyRKzyhM3L3BGcMPw7NEC">
+                Select Pro Plan
+              </StripeButton> */}
+              <Link href="#contact">
+                <button onClick={handleClick} className={styles.selectPlan}>Request a Consultation</button>
+              </Link>
+              <p className={styles.bestfortext}>For Companies that need full control, deeper integrations, and a chatbot that fits into their existing systems.</p>
             </div>
           </div>
         </section>
