@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -5,15 +7,13 @@
 }
 
 body {
-  font-family: "Arial", sans-serif;
+  font-family: "Inter", Arial, sans-serif;
   line-height: 1.6;
   color: #333;
-
 }
 
 header {
   background-color: #fff;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   position: fixed;
   width: 100%;
   top: 0;
@@ -25,7 +25,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 0.4rem 5%;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
@@ -39,69 +39,78 @@ section {
   margin: 0 auto;
 }
 
-section.Toastify{
+section.Toastify {
   padding: 0;
 }
 
 #hero {
-  height: 500px;
+  height: 60vh;
+  max-width: 1000px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  padding: 6rem 5%;
-  background: #373b44; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right,
-    #4286f4,
-    #373b44
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to right,
-    #4286f4,
-    #373b44
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  color: white;
+  margin-bottom: 64px;
   border-radius: 16px;
   margin-top: 120px;
 }
 
+.hero-span {
+  color: #2563eb;
+  background-color: #2563eb1a;
+  display: flex;
+  align-self: center;
+  width: fit-content;
+  padding: 4px 12px 4px 12px;
+  border-radius: 16px;
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.hero-paragraph {
+  color: #4b5563;
+  font-size: 20px;
+  margin-top: 1rem;
+}
+
 h1 {
-  font-size: 2.5rem;
+  font-size: 60px;
   margin-bottom: 1rem;
 }
 
-#contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  max-width: 600px;
-  margin: 2rem auto;
+h2 {
+  font-size: 36px;
+  line-height: 40px;
+  margin-bottom: 16px;
 }
 
-#contact-form input,
-#contact-form textarea {
-  padding: 0.8rem;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-}
-
-#contact-form textarea {
-  height: 150px;
-}
-
-#contact-form button {
-  padding: 1rem;
-  background-color: #6366f1;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+h3 {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 8px;
 }
 
 footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   text-align: center;
   padding: 2rem;
-  background-color: #f9fafb;
   margin-top: auto;
+}
+
+.infotext {
+  font-size: 14px;
+  color: #fff9;
+  margin-top: 48px;
+}
+
+@media (max-width: 768px) {
+  #hero {
+    margin-top: 240px;
+  }
+  #features {
+    padding-top: 128px;
+  }
 }
