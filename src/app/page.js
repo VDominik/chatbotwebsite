@@ -3,9 +3,24 @@ import { useEffect, useState } from "react";
 import styles from "./page.module.css";
 import StripeButton from "@/components/StripeButton";
 import Link from "next/link";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Navbar from "@/components/Navbar";
+import Footer from "@/app/Footer/Footer";
+import ContactForm from "@/app/ContactForm/ContactForm";
+import PricingPlans from "./PricingPlans/PricingPlans";
+import {
+  Bot,
+  Brain,
+  Globe,
+  Clock,
+  Shield,
+  BarChart,
+  CheckCircle2,
+  Check,
+  Contact,
+} from "lucide-react";
+import ChatPreview from "@/components/ChatPreview";
 
 export default function Home() {
   useEffect(() => {
@@ -42,7 +57,7 @@ export default function Home() {
             tooltipMessage: 'Hi There 👋 Ask me!',
             tooltipBackgroundColor: 'black',
             tooltipTextColor: 'white',
-            tooltipFontSize: 16
+            tooltipFontSize: 16,
           },
           disclaimer: {
             title: 'Disclaimer',
@@ -116,187 +131,229 @@ export default function Home() {
     document.body.appendChild(script);
   }, []);
 
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
-
-  const handleClick = () => {
-    toast.info("Please contact us or login before selecting a plan.", {
-      autoClose: 5000, // The toast will automatically close after 5 seconds
-    });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await fetch('/api/send-email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-  
-      const result = await response.json();
-  
-      if (response.ok) {
-        toast.success('Email sent successfully');
-        // Clear the form inputs
-        setFormData({
-          name: '',
-          email: '',
-          message: '',
-        });
-      } else {
-        console.error('Error sending email:', result);
-        toast.error(`Error sending email: ${result.message}`);
-      }
-    } catch (error) {
-      console.error('Error sending email:', error);
-      toast.error(`Error sending email: ${error.message}`);
-    }
-  };
-
   return (
     <div className={styles.page}>
       <Navbar />
       <main>
         <section id="hero" className={styles.hero}>
-          <h1>Transform Your Business with AI Chatbots</h1>
-          <p>
-            24/7 customer support, increased engagement, and better user
-            experience
+          <span className="hero-span">Introducing UpTalk AI Chat</span>
+          <h1>Transform Customer Support with Intelligent AI Chat</h1>
+          <p className="hero-paragraph">
+            Deploy a sophisticated AI chatbot that understands your customers,
+            solves problems instantly, and scales with your business.
           </p>
-          <Link href="#contact">
-          <button className={styles.ctaButton}>Get Started</button>
-          </Link>
+          <div className={styles.heroButtons}>
+            <Link href="#contact">
+              <button className={styles.buttonPrimary}>Get Started</button>
+            </Link>
+            <Link href="#contact">
+              <button className={styles.buttonSecondary}>Get Started</button>
+            </Link>
+          </div>
         </section>
 
         <section id="features" className={styles.features}>
-          <h2>Features</h2>
+          <div className={styles.featuresText}>
+            <span className={styles.featuresSpan}>Powerful Capabilities</span>
+            <h2>Next-Generation AI Features</h2>
+            <p className={styles.featuresParagraph}>
+              Our chatbot combines cutting-edge artificial intelligence with
+              intuitive design to deliver exceptional customer experiences.
+            </p>
+          </div>
           <div className={styles.featureGrid}>
             <div className={styles.featureCard}>
+              <div className={styles.featureIcon}>
+                <Bot size={24} />
+              </div>
+              <h3>Natural Conversations</h3>
+              <p className={styles.featuresCardParagraph}>
+                Engage users with human-like dialogue that understands context,
+                idioms, and customer sentiment.
+              </p>
+            </div>
+            <div className={styles.featureCard}>
+              <div className={styles.featureIcon}>
+                <Brain size={24} />
+              </div>
+              <h3>Adaptive Learning</h3>
+              <p className={styles.featuresCardParagraph}>
+                The AI learns from each interaction, continually improving its
+                responses and customer experience.
+              </p>
+            </div>
+            <div className={styles.featureCard}>
+              <div className={styles.featureIcon}>
+                <Globe size={24} />
+              </div>
+              <h3>Multilingual Support</h3>
+              <p className={styles.featuresCardParagraph}>
+                Engage customers globally with seamless multilingual
+                communication.
+              </p>
+            </div>
+            <div className={styles.featureCard}>
+              <div className={styles.featureIcon}>
+                <Clock size={24} />
+              </div>
               <h3>24/7 Availability</h3>
-              <p>Always ready to assist your customers, ensuring instant responses at any time.</p>
+              <p className={styles.featuresCardParagraph}>
+                Provide instant support around the clock, eliminating wait times
+                and enhancing satisfaction.
+              </p>
             </div>
             <div className={styles.featureCard}>
-              <h3>Custom Training</h3>
-              <p>Tailored to your business needs for smarter, more relevant interactions.</p>
+              <div className={styles.featureIcon}>
+                <Shield size={24} />
+              </div>
+              <h3>Secure & Compliant</h3>
+              <p className={styles.featuresCardParagraph}>
+                Enterprise-grade security with full GDPR, CCPA, and
+                industry-specific compliance built in.
+              </p>
             </div>
             <div className={styles.featureCard}>
-              <h3>Multi-language Support</h3>
-              <p>Engage customers globally with seamless multilingual communication.</p>
-            </div>
-            
-          </div>
-        </section>
-
-        <section id="pricing" className={styles.pricing}>
-          <h2>Pricing Plans</h2>
-          <div className={styles.pricingGrid}>
-            <div className={styles.pricingCard}>
-              <h3>Basic</h3>
-              <p className={styles.price}>$99/month</p>
-              <ul>
-                <li> &#10004; Essential chatbot functionality</li>
-                <li> &#10004; AI-powered responses from uploaded documents</li>
-                <li> &#10004; Email support</li>
-              </ul>
-              {/* <StripeButton priceId="price_1Qiv3KKzyhM3L3BGPrSyf7fP">
-                Select Basic Plan
-              </StripeButton> */}
-              <Link href="#contact">
-                <button onClick={handleClick} className={styles.selectPlan}>Select Basic Plan</button>
-              </Link>
-              <p className={styles.bestfortext}>Ideal for small businesses & individuals who need a simple yet powerful document-based chatbot without complex automation.</p>
-            </div>
-            <div className={`${styles.pricingCard} ${styles.featured}`}>
-              <h3>Professional</h3>
-              <p className={styles.price}>$149/month</p>
-              <ul>
-                <li>Everything in Basic, plus:</li>
-                <li> &#10004; Automated lead capture</li>
-                <li> &#10004; Analytics & reporting</li>
-                <li> &#10004; Continuous AI learning & document updates</li>
-                <li> &#10004; Conversation storage & Google Docs sync</li>
-
-              </ul>
-              {/* <StripeButton priceId="price_1QiuyRKzyhM3L3BGcMPw7NEC">
-                Select Pro Plan
-              </StripeButton> */}
-              <Link href="#contact">
-                <button onClick={handleClick} className={styles.selectPlan}>Select Pro Plan</button>
-              </Link>
-              <p className={styles.bestfortext}>Best for businesses that want more automation, smarter AI, and insights from customer interactions.</p>
-            </div>
-            <div className={`${styles.pricingCard}`}>
-              <h3>Enterprise</h3>
-              <p className={styles.price}>Custom Pricing</p>
-              <ul>
-                <li>Everything in Professional, plus</li>
-                <li> &#10004; White-label chatbot</li>
-                <li> &#10004;	API access for deeper integration</li>
-                <li> &#10004; Personalized Setup</li>
-              </ul>
-              {/* <StripeButton priceId="price_1QiuyRKzyhM3L3BGcMPw7NEC">
-                Select Pro Plan
-              </StripeButton> */}
-              <Link href="#contact">
-                <button onClick={handleClick} className={styles.selectPlan}>Request a Consultation</button>
-              </Link>
-              <p className={styles.bestfortext}>For Companies that need full control, deeper integrations, and a chatbot that fits into their existing systems.</p>
+              <div className={styles.featureIcon}>
+                <BarChart size={24} />
+              </div>
+              <h3>Analytics Dashboard</h3>
+              <p className={styles.featuresCardParagraph}>
+                Gain valuable insights from conversations to improve products
+                and customer experience.
+              </p>
             </div>
           </div>
         </section>
 
-        <section id="contact" className={styles.contact}>
-          <h2>Contact Us</h2>
-          <form id="contact-form" onSubmit={handleSubmit}>
-            <input
-              type="text"
-              name="name"
-              placeholder="Name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-            <textarea
-              name="message"
-              placeholder="Message"
-              value={formData.message}
-              onChange={handleChange}
-              required
-            ></textarea>
-            <button type="submit">Send Message</button>
-          </form>
+        <section id="demo" className={styles.demo}>
+          <div id="chatbot" className={styles.demoChatbot}>
+            <ChatPreview />
+          </div>
+          <div className={styles.demoText}>
+            <span className={styles.featuresSpan}>Interactive Demo</span>
+
+            <h2>Experience the AI Difference</h2>
+            <p className={styles.demoParagraph}>
+              See how our AI chatbot delivers natural, helpful responses that
+              solve customer problems in real-time. This interactive preview
+              demonstrates the intelligence and personality of your future
+              virtual assistant.
+            </p>
+
+            <div className={styles.demoChecks}>
+              <div className={styles.demoCheck}>
+                <div className={styles.demoCheckIcon}>
+                  <CheckCircle2 />
+                </div>
+                <div className={styles.demoCheckText}>
+                  Understands natural language and context
+                </div>
+              </div>
+              <div className={styles.demoCheck}>
+                <div className={styles.demoCheckIcon}>
+                  <CheckCircle2 />
+                </div>
+                <div className={styles.demoCheckText}>
+                  Learns from every customer interaction
+                </div>
+              </div>
+              <div className={styles.demoCheck}>
+                <div className={styles.demoCheckIcon}>
+                  <CheckCircle2 />
+                </div>
+                <div className={styles.demoCheckText}>
+                  Seamlessly transfers to human agents when needed
+                </div>
+              </div>
+              <div className={styles.demoCheck}>
+                <div className={styles.demoCheckIcon}>
+                  <CheckCircle2 />
+                </div>
+                <div className={styles.demoCheckText}>
+                  Integrates with your existing tools and CRM
+                </div>
+              </div>
+              <div className={styles.demoCheck}>
+                <div className={styles.demoCheckIcon}>
+                  <CheckCircle2 />
+                </div>
+                <div className={styles.demoCheckText}>
+                  Customizable to match your brand voice
+                </div>
+              </div>
+              <div className={styles.demoCheck}>
+                <div className={styles.demoCheckIcon}>
+                  <CheckCircle2 />
+                </div>
+                <div className={styles.demoCheckText}>
+                  Real-time analytics and performance tracking
+                </div>
+              </div>
+              <i className={styles.demoItalic}>
+                Try sending a message in the demo to see how the chatbot
+                responds.
+              </i>
+            </div>
+          </div>
         </section>
+
+        <section id="benefits" className={styles.benefits}>
+          <div className={styles.benefitsText}>
+            <h2 className={styles.benefitsHeading2}>
+              The Future of Customer Engagement
+            </h2>
+            <div className={styles.benefitsTextWrapper}>
+              <p className={styles.benefitsParagraph}>
+                As customer expectations evolve, businesses need AI solutions
+                that can keep pace. Our platform doesn't just solve today's
+                challenges—it prepares you for tomorrow's opportunities.
+              </p>
+              <div className={styles.demoCheck}>
+                <div className={styles.benefitsCheckIcon}>
+                  <Check size={12} />
+                </div>
+                <div className={styles.demoCheckText}>
+                  Personalized customer journeys based on behavior and history
+                </div>
+              </div>
+              <div className={styles.demoCheck}>
+                <div className={styles.benefitsCheckIcon}>
+                  <Check size={12} />
+                </div>
+                <div className={styles.demoCheckText}>
+                  Proactive support that anticipates needs before they arise
+                </div>
+              </div>
+              <div className={styles.demoCheck}>
+                <div className={styles.benefitsCheckIcon}>
+                  <Check size={12} />
+                </div>
+                <div className={styles.demoCheckText}>
+                  Cross-channel consistency for seamless customer experiences
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className={styles.benefitsPercentage}>
+            <div className={styles.benefitsPercentageText}>
+              <h2>76%</h2>
+              <p>
+                of customers prefer self-service over talking to a company
+                representative
+              </p>
+            </div>
+            <p className="infotext">Source: Forrester Research</p>
+          </div>
+        </section>
+
+        <PricingPlans isDashboard={false} />
+
+        <ContactForm />
       </main>
 
-
-      <footer className={styles.footer}>
-        <p>&copy; 2024 UpTalk Studio. All rights reserved.</p>
-      </footer>
+      <Footer />
 
       <ToastContainer position="bottom-left" />
-
     </div>
   );
 }
