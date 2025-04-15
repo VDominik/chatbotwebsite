@@ -13,7 +13,7 @@ export default function Navbar() {
 
         <div className={styles.navLinks}>
           <a href="#features">Features</a>
-          <a href="#pricing">Demo</a>
+          <a href="#demo">Demo</a>
           <a href="#pricing">Pricing</a>
           <Link href="/login">
             <button className={styles.buttonSecondaryNav}>Sign In</button>
