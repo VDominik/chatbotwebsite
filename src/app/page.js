@@ -146,8 +146,8 @@ export default function Home() {
             <Link href="#contact">
               <button className={styles.buttonPrimary}>Get Started</button>
             </Link>
-            <Link href="#contact">
-              <button className={styles.buttonSecondary}>Get Started</button>
+            <Link href="#demo">
+              <button className={styles.buttonSecondary}>View Demo</button>
             </Link>
           </div>
         </section>
