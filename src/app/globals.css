@@ -108,9 +108,9 @@ footer {
 
 @media (max-width: 768px) {
   #hero {
-    margin-top: 240px;
+    margin-top: 260px;
   }
   #features {
-    padding-top: 128px;
+    padding-top: 200px;
   }
 }
