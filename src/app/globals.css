@@ -108,9 +108,12 @@ footer {
 
 @media (max-width: 768px) {
   #hero {
-    margin-top: 260px;
+    height: auto;
   }
   #features {
     padding-top: 200px;
+  }
+  h1 {
+    font-size: 40px;
   }
 }
